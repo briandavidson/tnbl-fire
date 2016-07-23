@@ -1,0 +1,200 @@
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+body {
+	padding: 0;
+	background-image: url('/images/lightbg.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.footer,
+.header,
+.marketing {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+/* Custom page header */
+.header {
+	/*border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 10px;*/
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 40px;
+	padding-bottom: 19px;
+}
+/* Custom page footer */
+.footer {
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
+}
+.container-narrow > hr {
+	margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+	font-size: 21px;
+	padding: 14px 24px;
+}
+/* Supporting marketing content */
+.marketing {
+	margin: 40px 0;
+}
+.marketing p + h4 {
+	margin-top: 28px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+	.container {
+		max-width: 730px;
+	}
+	/* Remove the padding we set earlier */
+	.footer,
+	.header,
+	.marketing {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	/* Space out the masthead */
+	.header {
+		margin-bottom: 30px;
+	}
+	/* Remove the bottom border on the jumbotron for visual effect */
+	.jumbotron {
+		border-bottom: 0;
+	}
+}
+.real-header {
+	box-shadow: rgba(165, 165, 165, 0.7) 0 0 3px 2px;
+}
+#send_request_modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgb(255, 255, 255);
+	overflow: hidden;
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	height: 160px;
+	width: 300px;
+}
+#send_request_modal .alpha-mask {
+	transition: all 30s ease;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	background-image: url('/images/sologo.png');
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: scale(1.5) rotate(-270deg);
+}
+#send_request_modal .alpha-mask.spinner {
+	transform: scale(3) rotate(0);
+}
+#send_request_modal input {
+	opacity: 0;
+	outline: none;
+	border-top: none;
+	border-bottom: 1px solid rgba(148, 148, 148, 0.78);
+	border-left: none;
+	border-right: none;
+	width: 80%;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	bottom: 60px;
+	z-index: 500;
+	background: rgba(142, 142, 146, 0.33);
+	padding: 4px 12px;
+	box-shadow: inset 0 7px 8px -5px rgb(152, 152, 152);
+	transition: opacity 0.77s linear;
+	border-top: 1px solid #e0e0e0;
+}
+#send_request_modal input.reveal {
+	opacity: 1;
+}
+#send_request_label {
+	transition: all 0.77s linear;
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	top: 25px;
+	transform: translateX(-50%);
+	color: gray;
+	font-weight: bold;
+}
+#send_request_label.reveal {
+	opacity: 1;
+}
+#send_request_button {
+	text-decoration: none;
+	cursor: pointer;
+	opacity: 0;
+	font-weight: bold;
+	color: gray;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 10px;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 10px 0;
+	border: 1px solid #a9a9a9;
+	border-radius: 2px;
+	font-size: 12px;
+	width: 25%;
+	text-align: center;
+	transition: opacity 0.77s linear;
+}
+#send_request_button.reveal {
+	opacity: 1;
+}
+#configs_view {
+	opacity: 0;
+	padding: 5px 15px;
+	position: absolute;
+	min-width: 650px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	background: #f8f8f8;
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	transition: opacity 0.77s ease;
+}
+#configs_view.reveal {
+	opacity: 1;
+}
+#configs_table {
+	max-width: 650px;
+	width: 100vw;
+	margin-bottom: 5px;
+}
+#configs_table th {
+	border-top: none;
+}
+#go_back_button {
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	position: absolute;
+	bottom: -50px;
+	right: 0;
+	background: #f8f8f8;
+	padding: 5px 15px;
+	border-radius: 3px;
+	text-decoration: none;
+	font-weight: bold;
+}
