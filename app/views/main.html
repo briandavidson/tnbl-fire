@@ -1,7 +1,34 @@
-<div id="send_request_modal">
+<div id="send_request_modal" ng-hide="custom_request_success">
 	<span id="send_request_label" ng-class="{'reveal': reveal}">Enter a URL</span>
 	<input id="send_request_input" ng-class="{'reveal': reveal}" type="text" ng-model="endpoint"/>
 	<div class="alpha-mask" ng-class="{'spinner': loaded}">
 	</div>
-	<a href="#/configs" ng-class="{'reveal': reveal}" id="send_request_button">Send</a>
+	<a ng-click="go('configs')" ng-class="{'reveal': reveal}" id="send_request_button">Send</a>
+</div>
+
+
+
+<div ng-show="configs.length" id="configs_view" ng-class="{'reveal': reveal}">
+	<table id="configs_table" class="table table-hover table-condensed">
+		<tr>
+			<th>User</th>
+			<th>Name</th>
+			<th>Hostname</th>
+			<th>Port</th>
+		</tr>
+		<tr ng-repeat="config in configs">
+			<td>{{config.username}}</td>
+			<td>{{config.name}}</td>
+			<td>{{config.hostname}}</td>
+			<td>{{config.port}}</td>
+		</tr>
+	</table>
+	<a id="go_back_button" ng-click="go('nowhere')">Back</a>
+</div>
+
+<div ng-if="custom_request_success" ng-show="!configs.length">
+	<span class="no-data-text">
+		No data was received from: {{last_endpoint}}
+	</span>
+	<span id="go_nowhere_button" ng-click="go('nowhere')">Back</span>
 </div>
