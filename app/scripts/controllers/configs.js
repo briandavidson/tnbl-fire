@@ -34,7 +34,6 @@ angular.module('tnblFireApp')
 			// push a message to the end of the array
 			$scope.configs.$add($scope.new_config)
 				.then(function(data) {
-					console.dir(data);
 					$scope.new_config = {
 						name: "",
 						hostname: "",

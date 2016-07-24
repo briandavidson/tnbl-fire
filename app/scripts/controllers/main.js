@@ -47,15 +47,9 @@ angular.module('tnblFireApp')
 					for (var config in response.data.configs) {
 						var tmp = response.data.configs[config];
 						$scope.configs.push(tmp);
-						for (var key in tmp) {
-							console.log(key + ": " + tmp[key]);
-						}
 					}
 				}, function errorCallback(response) {
 					$scope.last_endpoint = $scope.endpoint;
-					console.log("failed to receive data from: " + $scope.endpoint);
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
 				});
 			} else if (dest === 'configs') {
 				$scope.configs = [];
@@ -66,13 +60,11 @@ angular.module('tnblFireApp')
 				$scope.endpoint = '';
 				$location.path('/configs');
 			}
-			console.log(dest);
 		}
 
 		$scope.ascii = false;
 		$scope.hire_me = function() {
 			$scope.ascii = true;
-			console.log("hire me! " + $scope.ascii);
 		};
 
 		$scope.awesomeThings = [

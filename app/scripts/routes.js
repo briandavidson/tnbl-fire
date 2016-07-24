@@ -29,7 +29,6 @@ angular.module('tnblFireApp')
 		});
 
 	function ding() {
-		console.log("DING!");
 		window.location.assign('/#/configs');
 	}
 	ding();
