@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+	<title>tenable ui</title>
+</head>
+
+<body>
+
+	<div class="request_page fader">
+		<input placeholder="Endpoint URL.." id="user_url" type="text" />
+		<button onclick="sendRequest()">Request Data</button>
+	</div>
+
+	<div class="configs_page fader">
+		<table id="response">
+		</table>
+		<br>
+		<button onclick="showRequestPage()">Back</button>
+	</div>
+
+</body>
+
+<style>
+	div.request_page {
+		margin: 20px;
+		opacity: 1;
+		transition: all .333s ease;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+
+	div.configs_page {
+		margin: 20px;
+		opacity: 0;
+		transition: all .333s ease;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -1000;
+		max-width: 650px;
+	}
+
+	#response {
+		width: 100%;
+	}
+
+	.invalid-url {
+		color: #0017d6;
+		text-decoration: underline;
+	}
+
+	.table-heading {
+		font-weight: bold;
+	}
+
+	.table-heading th {
+		text-align: left;
+		text-decoration: underline;
+	}
+</style>
+
+<script>
+	function renderConfigsPage() {
+
+		var request_page_styles = {
+			opacity: 0,
+			zIndex: -1000
+		};
+		var configs_page_styles = {
+			opacity: 1,
+			zIndex: 1000
+		};
+
+		$("div.request_page").css(request_page_styles);
+		$("div.configs_page").css(configs_page_styles);
+
+	}
+
+	function showRequestPage() {
+
+		var request_page_styles = {
+			opacity: 1,
+			zIndex: 1000
+		};
+		var configs_page_styles = {
+			opacity: 0,
+			zIndex: -1000
+		};
+
+		document.getElementById("user_url").value = '';
+		$("div.request_page").css(request_page_styles);
+		$("div.configs_page").css(configs_page_styles);
+		document.getElementById("user_url").focus();
+
+	}
+
+	function sendRequest() {
+		var xmlhttp = new XMLHttpRequest();
+		var user_url = document.getElementById("user_url").value;
+
+		// get custom url from user or use local test server on port 3000
+		var url = user_url || "db.json";
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var res = JSON.parse(xmlhttp.responseText);
+				handleResponse(res);
+			} else {
+				document.getElementById("response").innerHTML = '<br><span>Invalid response received from: </span>' + '<a class="invalid-url" href="' + user_url + '">' + user_url + '</a>';
+			}
+			renderConfigsPage();
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+
+	function handleResponse(res) {
+		var html =
+			'<tr class="table-heading">' +
+			'<th>user</th>' +
+			'<th>name</th>' +
+			'<th>hostname</th>' +
+			'<th>port</th>' +
+			'</tr>';
+		var i;
+		for (i = 0; i < res.configurations.length; i++) {
+			html +=
+				'<tr>' +
+				'<td>' + res.configurations[i].username + '</td>' +
+				'<td>' + res.configurations[i].name + '</td>' +
+				'<td>' + res.configurations[i].hostname + '</td>' +
+				'<td>' + res.configurations[i].port + '</td>' +
+				'</tr>';
+		}
+		document.getElementById("response").innerHTML = html;
+	}
+	document.getElementById("user_url").focus();
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>tenable ui</title>
+</head>
+
+<body>
+
+	<div style="padding: 8px;">
+		<span>Server URL </span>
+		<br>
+		<input id="user_url" type="text" />
+		<button onclick="sendRequest()">Request</button>
+		<table id="response" style="width: 100%; max-width: 650px;">
+		</table>
+	</div>
+
+</body>
+
+<script>
+	function sendRequest() {
+		var xmlhttp = new XMLHttpRequest();
+		var user_url = document.getElementById("user_url").value;
+
+		// get custom url from user or use local test server
+		var url = user_url || "db.json";
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				// success receiving data from endpoint
+				var response = JSON.parse(xmlhttp.responseText);
+				handleResponse(response);
+			} else {
+				// failure receiving data from endpoint
+				document.getElementById("response").innerHTML = '<br><span>Invalid response received from: </span>' + '<a href="' + user_url + '" style="color: #0017d6; text-decoration: underline;">' + user_url + '</a>';
+			}
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+
+	function handleResponse(response) {
+		// table headings
+		var html =
+			'<br>' +
+			'<tr style="font-weight: bold;">' +
+			'<th style="text-align: left; text-decoration: underline;">user</th>' +
+			'<th style="text-align: left; text-decoration: underline;">name</th>' +
+			'<th style="text-align: left; text-decoration: underline;">hostname</th>' +
+			'<th style="text-align: left; text-decoration: underline;">port</th>' +
+			'</tr>';
+		// table rows with response data
+		var i;
+		for (i = 0; i < response.configurations.length; i++) {
+			html +=
+				'<tr>' +
+				'<td style="">' + response.configurations[i].username + '</td>' +
+				'<td style="">' + response.configurations[i].name + '</td>' +
+				'<td style="">' + response.configurations[i].hostname + '</td>' +
+				'<td style="">' + response.configurations[i].port + '</td>' +
+				'</tr>';
+		}
+		document.getElementById("response").innerHTML = html;
+	}
+</script>
+
+</html>
