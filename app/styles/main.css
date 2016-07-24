@@ -191,6 +191,33 @@ body {
 	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
 	position: absolute;
 	bottom: -50px;
+	right: 75px;
+	background: #f8f8f8;
+	padding: 5px 15px;
+	border-radius: 3px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#add_config_button {
+	border: none;
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	position: absolute;
+	bottom: -50px;
+	right: 90px;
+	background: #f8f8f8;
+	padding: 5px 15px;
+	border-radius: 3px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #337ab7;
+}
+#add_config_button.custom-disabled-state {
+	color: gray;
+}
+#new_config_button {
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	position: absolute;
+	bottom: -50px;
 	right: 0;
 	background: #f8f8f8;
 	padding: 5px 15px;
