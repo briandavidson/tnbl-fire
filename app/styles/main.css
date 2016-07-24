@@ -148,8 +148,7 @@ body {
 	font-weight: bold;
 	color: gray;
 	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+	right: 60px;
 	bottom: 10px;
 	background: rgba(255, 255, 255, 0.5);
 	padding: 10px 0;
@@ -161,6 +160,27 @@ body {
 	transition: opacity 0.77s linear;
 }
 #send_request_button.reveal {
+	opacity: 1;
+}
+#cancel_request_button {
+	text-decoration: none;
+	cursor: pointer;
+	opacity: 0;
+	font-weight: bold;
+	color: gray;
+	position: absolute;
+	left: 60px;
+	bottom: 10px;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 10px 0;
+	border: 1px solid #a9a9a9;
+	border-radius: 2px;
+	font-size: 12px;
+	width: 25%;
+	text-align: center;
+	transition: opacity 0.77s linear;
+}
+#cancel_request_button.reveal {
 	opacity: 1;
 }
 #configs_view {
@@ -188,6 +208,19 @@ body {
 	border-top: none;
 }
 #go_back_button {
+	cursor: pointer;
+	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
+	position: absolute;
+	bottom: -50px;
+	right: 0;
+	background: #f8f8f8;
+	padding: 5px 15px;
+	border-radius: 3px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#fetch_button {
+	cursor: pointer;
 	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
 	position: absolute;
 	bottom: -50px;
@@ -199,6 +232,7 @@ body {
 	font-weight: bold;
 }
 #add_config_button {
+	cursor: pointer;
 	border: none;
 	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
 	position: absolute;
@@ -215,6 +249,7 @@ body {
 	color: gray;
 }
 #new_config_button {
+	cursor: pointer;
 	box-shadow: rgba(105, 105, 105, 0.91) 5px 6px 9px 0;
 	position: absolute;
 	bottom: -50px;

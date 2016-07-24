@@ -3,7 +3,8 @@
 	<input id="send_request_input" ng-class="{'reveal': reveal}" type="text" ng-model="endpoint"/>
 	<div class="alpha-mask" ng-class="{'spinner': loaded}">
 	</div>
-	<a ng-click="go('configs')" ng-class="{'reveal': reveal}" id="send_request_button">Send</a>
+	<a ng-click="go('configs')" ng-class="{'reveal': reveal}" id="send_request_button">Fetch</a>
+	<a ng-click="go('nowhere')" ng-class="{'reveal': reveal}" id="cancel_request_button">Cancel</a>
 </div>
 
 

@@ -59,7 +59,7 @@ angular.module('tnblFireApp')
 				$scope.configs = [];
 				$scope.custom_request_success = false;
 				$scope.endpoint = '';
-				$location.path('/');
+				$location.path('/configs');
 			}
 			console.log(dest);
 		}

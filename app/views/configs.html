@@ -27,7 +27,7 @@
 			<td><input type="number" ng-model="new_config.port"/></td>
 		</tr>
 	</table>
-	<a ng-hide="creating_config" id="go_back_button" href="#/">Back</a>
+	<a ng-hide="creating_config" id="fetch_button" href="#/">Fetch</a>
 	<button ng-class="{'custom-disabled-state': (!new_config.username.length || !new_config.name.length || !new_config.hostname.length || new_config.port === undefined)}" ng-hide="!creating_config" id="add_config_button" ng-click="addConfig()" ng-disabled="!new_config.username.length || !new_config.name.length || !new_config.hostname.length || new_config.port === undefined">Add</button>
 	<a id="new_config_button" ng-click="creating_config = !creating_config">{{creating_config ? "Cancel" : "New"}}</a>
 

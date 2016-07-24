@@ -9,20 +9,29 @@
  */
 angular.module('tnblFireApp')
 
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
+.config(['$routeProvider', function($routeProvider, $location) {
+	$routeProvider
+		.when('/', {
+			templateUrl: 'views/main.html',
+			controller: 'MainCtrl'
+		})
 
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
-      .when('/configs', {
-        templateUrl: 'views/configs.html',
-        controller: 'ConfigsCtrl'
-      })
-      .otherwise({redirectTo: '/'});
-  }]);
+	.when('/chat', {
+			templateUrl: 'views/chat.html',
+			controller: 'ChatCtrl'
+		})
+		.when('/configs', {
+			templateUrl: 'views/configs.html',
+			controller: 'ConfigsCtrl'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+
+	function ding() {
+		console.log("DING!");
+		window.location.assign('/#/configs');
+	}
+	ding();
+
+}]);
