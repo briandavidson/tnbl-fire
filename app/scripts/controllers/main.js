@@ -28,6 +28,11 @@ angular.module('tnblFireApp')
 			}, 60000);
 		}, 100);
 
+		$scope.float = true;
+		$interval(function() {
+			$scope.float = !$scope.float;
+		}, 1500);
+
 		$scope.go = function(dest) {
 			if ($scope.endpoint.length && dest !== 'nowhere') {
 				$scope.custom_request_success = true;
@@ -63,6 +68,12 @@ angular.module('tnblFireApp')
 			}
 			console.log(dest);
 		}
+
+		$scope.ascii = false;
+		$scope.hire_me = function() {
+			$scope.ascii = true;
+			console.log("hire me! " + $scope.ascii);
+		};
 
 		$scope.awesomeThings = [
 			'HTML5 Boilerplate',

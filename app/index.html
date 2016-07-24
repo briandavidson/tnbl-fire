@@ -52,6 +52,11 @@
 		<div ng-view=""></div>
 	</div>
 
+	<div ng-controller="MainCtrl">
+		<img ng-click="ascii = !ascii" ng-class="{'float': float}" class="hire-me-button" src="images/sologo_white.png">
+		<img ng-class="{'reveal': ascii}" id="hire-me" ng-show="ascii" src="images/tenable_ascii.png">
+	</div>
+
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 	<script>
 	!function(A, n, g, u, l, a, r) {
